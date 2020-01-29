@@ -1,4 +1,5 @@
 body {
+  background-color: black;
 
 }
 
@@ -7,5 +8,8 @@ background-color: black;
 width: 30px;
 height: 30px;
 float: left;
+line-height: 30px;
+text-align: center;
+color: white;
 
 }
