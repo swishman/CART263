@@ -1,5 +1,5 @@
 body, html {
-height: 100%;
+ height: 100%;
  width:100vw;
  scroll-behavior: smooth;
  padding: 0;
@@ -10,7 +10,7 @@ height: 100%;
 #storylength {
   height:1000vh;
   background-color: orange;
-  float: lef;
+  float: left;
 }
 
 
@@ -62,17 +62,18 @@ position: relative;
 }
 
 #beginningtext {
-  width: 50vh;
+  width: 70vw;
   height: 10vh;
-  position: absolute;
-  top: 25vh;
-  left: 50vh;
+  position: fixed;
+  top: 20vh;
+  left: 25vh;
 
 }
 
 #beginningtext > h1 {
   font-family: "Helvetica";
-  font-size: 3vw;
+  font-size: 8vw;
+  line-height: 8vw;
 
 }
 
@@ -99,19 +100,20 @@ position: relative;
 
 #endbutton {
   bottom: 0;
+  width: 500px;
   background-color:rgba(255, 0, 0, 0);;
-  border-radius:11px;
+  border-radius:50px;
   cursor:pointer;
 	color:white;
 	font-family:Arial;
-	font-size:17px;
-	padding:156px 150px;
+	font-size:2vw;
+	padding:30px 150px;
   border:3px solid white;
 
   position: absolute;
-  bottom: 5%;
-  left:50%;
+  bottom: 15%;
   z-index:100;
+  margin-left: -250px;
 
 
 
@@ -139,6 +141,28 @@ position: relative;
   /* margin: auto; */
   transform: rotateY(45deg);
 
+}
 
+.ui-dialog .ui-dialog-buttonpane {
+  background-color: black;
+}
 
+.ui-widget-header {
+  background-color: black;
+  color: white;
+}
+
+.ui-dialog .ui-dialog-content {
+  background-color: black;
+
+}
+
+.ui-widget-content {
+  background-color: black;
+  color: white;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+  background-color: black;
+  color: white;
 }

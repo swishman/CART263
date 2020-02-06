@@ -9,42 +9,87 @@ A parallax scrolling experiment.
 
 *********************************************************************/
 
+//
+
+let girlScale = 1;
+let opacity = 1;
+
 // Let's get this document ready.
 
 $(document).ready(setup);
 
 // Our setup function.
 
+let scrollTop = 0;
+let scrollDifference = 0;
+
 function setup() {
 
+  $('#question').dialog({
+    buttons: {
+      "Fuck Yeah": function() {
+        $(this).dialog('close');
+      },
+      "Nah": function() {
+        $(this).parent().effect('shake');
+      }
+    },
+  });
 
+  // return;
   // Okay, so when the window scrolls, we're gonna make some things happen.
 
-  $(window).scroll(function() {
+  $(window).scroll(function(e) {
+
+    // Trying to get this jquery dialog to display in the center!
+
+
+
+    // console.log(e);
 
     // Let's store how far away we move from the top of the window as we scroll down.
+    // We'll also store what direction the user is scrolling in.
 
-    let scrollTop = $(window).scrollTop();
+    let newScrollTop = $(window).scrollTop();
+    scrollDifference = newScrollTop - scrollTop;
+    scrollTop = newScrollTop;
+
+    console.log(scrollDifference)
 
     // Now, let's call our parallaxScroll function (see more details below).
-    // This function makes use of scrollTop to perform transformations to
+    // This function makes use of scrollTop to adjust the speed of scrolling
     // DOM elements.
 
     parallaxScroll();
 
-    // We also want to keep track of how far we are along our story.
+    // We also have parallaxGrow, which scales objects based on scroll
+    // direction.
+
+    parallaxGrow();
+
+    // All of these functions are happening throughout the entirety of
+    // the document. That is, even when they're not in view, they're happening.
+    // But what if we want to only call scrolling functions in certain
+    // areas of the page?
+
+    // We'll  need to keep track of how far we are along in our story.
     // Let's check and make sure with some if() statements.
 
     // Our finale container.
 
     if (scrollTop > $("#endcontainer").position().top) {
-      console.log(" red container");
+      console.log("end container");
 
       // Here, we can perform functions when this container comes into view.
+
+      // Let's apply some jQuery animations to an HTML button.
 
       $("#endbutton")
         .hide()
         .fadeIn(1000);
+
+      // When you click that button, it brings us back to the top of the page.
+      // Is this particularly Sisyphean? I really hope so.
 
       $("#endbutton").click(function() {
         window.location = '#start'
@@ -52,9 +97,24 @@ function setup() {
 
     }
 
+
     // Our midway through container.
     else if (scrollTop > $("#middlecontainer").position().top) {
-      console.log(" yellow container");
+      console.log("middle container");
+
+      // Here, we have parallaxRotate, which, you guessed it! Rotates elements
+      // as we scroll up and down the page.
+
+      parallaxRotate();
+
+
+    } else if (scrollTop > $("#beginning").position().top) {
+      console.log("beginning");
+
+      // This is parallaxOpacity, which, you know... does what it says it
+      // says it's gonna do!
+
+      parallaxOpacity();
 
 
     }
@@ -63,16 +123,6 @@ function setup() {
   })
 
 
-        $('#question').dialog({
-      buttons: {
-        "Good": function() {
-          $(this).dialog('close');
-        },
-        "Bad": function() {
-          $(this).parent().effect('shake');
-        }
-      }
-    });
 
 
 }
@@ -100,32 +150,95 @@ function parallaxScroll() {
 
   $("#boy").css("bottom", scrollTop / HIS_LOVE);
 
-  $("#text").css("transform", 'rotateY(' + (scrollTop / 100) + 'rad)');
+}
+
+// This was some alternative math I experimented with.
+// It was essentially calculating the scroll speed using a logarithmic
+// function, which as you ScrollTop increases, the scroll speed decreases.
+// It worked alright, but I didn't really care much for the results.
+
+// $("#girl").css("top", (1/1+Math.sqrt(scrollHeight)));
+// console.log("top:: "+$("#girl").css("top"));
+// let cTop = parseFloat($("#girl").css("top"))+(51/Math.sqrt(scrollHeight));
+// $("#girl").css("top", cTop);
+// console.log(cTop);
+//
+// console.log((1/Math.sqrt(scrollHeight)));
+
+
+// Here, we have a function which uses a CSS scale transformation
+// to apply shrink / grow animations to elements.
+
+function parallaxGrow() {
+
+  // Set our scale value.
+
+  const SCALE = 0.001;
+
+  // Shrink when we scroll down! The scale is substracted from
+  // our global girlScale value.
+
+  if (scrollDifference > 0) {
+
+    console.log("Shrink");
+
+    girlScale -= SCALE;
+
+    // and Grow when we scroll up. Added to our girlScale value.
+
+  } else if (scrollDifference < 0) {
+
+    console.log("Grow");
+
+    girlScale += SCALE;
+
+
+  }
+
+  // The value is calculated via if() and then plugged into the CSS transform.
+
+  $("#girl").css("transform", `scale(${girlScale},${girlScale})`);
 
 }
 
 
-  // This was some alternative math I experimented with.
+// Our Parallax Rotate.
 
-  // $("#girl").css("top", (1/1+Math.sqrt(scrollHeight)));
-  // console.log("top:: "+$("#girl").css("top"));
-  // let cTop = parseFloat($("#girl").css("top"))+(51/Math.sqrt(scrollHeight));
-  // $("#girl").css("top", cTop);
-  // console.log(cTop);
-  //
-  // console.log((1/Math.sqrt(scrollHeight)));
+function parallaxRotate() {
+
+  $("#text").css("transform", 'rotateY(' + (scrollTop / 100) + 'rad)');
+
+}
+
+// ParallaxOpacity........ The possibilities are endless!
+
+function parallaxOpacity() {
+
+  const OPACITY_VALUE = 0.1;
+
+  // Hide when we scroll down! The opacity is substracted from
+  // our global opacity value.
+
+  if (scrollDifference > 0) {
+
+    console.log("Hide");
+
+      if (opacity > 0) {
+    opacity -= OPACITY_VALUE;
+      }
+
+    // and Show when we scroll up. Added to our opacity value.
+
+  } else if (scrollDifference < 0) {
 
 
+    console.log("Show");
+      if (opacity < 1) {
+    opacity += OPACITY_VALUE;
+  }
+  }
 
-// Here, we have a function which uses a CSS scale transformation
-// to apply some effects to elements.
-
-function parallaxGrow() {
-
-  $("girl").css("transform", 'scale(1,1)');
-  let cTop = parseFloat($("#girl").css("transform")) + ('scale(' + (-1 * scrollHeight) + ')');
-
-  $("#girl").css("transform", cTop);
+  $("#beginningtext").css("opacity", opacity);
 
 
 }
