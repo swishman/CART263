@@ -54,7 +54,7 @@ function setup() {
     scrollDifference = newScrollTop - scrollTop;
     scrollTop = newScrollTop;
 
-    console.log(scrollDifference)
+    console.log(scrollDifference);
 
     // Now, let's call our parallaxScroll function (see more details below).
     // This function makes use of scrollTop to adjust the speed of scrolling
