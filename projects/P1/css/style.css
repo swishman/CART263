@@ -4,6 +4,7 @@ body, html {
  scroll-behavior: smooth;
  padding: 0;
  margin: 0;
+ background-color: black;
 
 }
 
@@ -37,7 +38,7 @@ background-size: contain;
   width: 100vw;
   bottom: 0;
   left: 0;
-  margin-bottom:-50vh;
+  margin-bottom:-40vh;
   background-color: none;
   text-align: center;
   z-index: 5;
@@ -132,14 +133,27 @@ position: relative;
 #text {
 
   width:60vw;
-  height:25vh;
-  background-color: #000;
+  height:60vw;
   font-size: 50px;
   text-align: center;
   position: absolute;
+  background-image: url("../assets/images/spiral.png");
   top: 50%;
   /* margin: auto; */
-  transform: rotateY(45deg);
+  transform: rotate(45deg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+
+}
+
+#blackout {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.75;
+  position:fixed;
+  z-index: 10;
 
 }
 
@@ -165,4 +179,8 @@ position: relative;
 .ui-dialog .ui-dialog-buttonpane button {
   background-color: black;
   color: white;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  display:none;
 }

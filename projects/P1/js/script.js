@@ -13,6 +13,7 @@ A parallax scrolling experiment.
 
 let girlScale = 1;
 let opacity = 1;
+let rotateNumber = 0;
 
 // Let's get this document ready.
 
@@ -22,13 +23,16 @@ $(document).ready(setup);
 
 let scrollTop = 0;
 let scrollDifference = 0;
+const eltonJohnTrack = new Audio("assets/sounds/EltonJohn.mp3");
 
 function setup() {
 
   $('#question').dialog({
     buttons: {
       "Fuck Yeah": function() {
-        $(this).dialog('close');
+        $(this).dialog('close'),
+        playElton(),
+        curtainsUp();
       },
       "Nah": function() {
         $(this).parent().effect('shake');
@@ -36,10 +40,12 @@ function setup() {
     },
   });
 
+
   // return;
   // Okay, so when the window scrolls, we're gonna make some things happen.
 
   $(window).scroll(function(e) {
+
 
     // Trying to get this jquery dialog to display in the center!
 
@@ -64,6 +70,9 @@ function setup() {
 
     // We also have parallaxGrow, which scales objects based on scroll
     // direction.
+
+    parallaxRotate();
+
 
     parallaxGrow();
 
@@ -105,7 +114,6 @@ function setup() {
       // Here, we have parallaxRotate, which, you guessed it! Rotates elements
       // as we scroll up and down the page.
 
-      parallaxRotate();
 
 
     } else if (scrollTop > $("#beginning").position().top) {
@@ -182,8 +190,10 @@ function parallaxGrow() {
 
     console.log("Shrink");
 
+    if (girlScale > 0) {
     girlScale -= SCALE;
 
+  }
     // and Grow when we scroll up. Added to our girlScale value.
 
   } else if (scrollDifference < 0) {
@@ -191,7 +201,6 @@ function parallaxGrow() {
     console.log("Grow");
 
     girlScale += SCALE;
-
 
   }
 
@@ -206,7 +215,16 @@ function parallaxGrow() {
 
 function parallaxRotate() {
 
-  $("#text").css("transform", 'rotateY(' + (scrollTop / 100) + 'rad)');
+  const ROTATE_VALUE = 10;
+
+  console.log("Rotate");
+
+  rotateNumber += ROTATE_VALUE;
+
+  $("#text").css("transform", `rotate(${rotateNumber}deg)`);
+
+  console.log(rotateNumber);
+
 
 }
 
@@ -240,5 +258,16 @@ function parallaxOpacity() {
 
   $("#beginningtext").css("opacity", opacity);
 
+
+}
+
+// Play some music
+
+function playElton() {
+eltonJohnTrack.play();
+}
+
+function curtainsUp() {
+  $("#blackout").css("opacity", 0);
 
 }
