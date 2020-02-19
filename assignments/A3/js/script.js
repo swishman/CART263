@@ -149,13 +149,30 @@ let buttons = [];
 const NUM_OPTIONS = 5;
 let $correctButton;
 
-
 $(document).ready(setup);
 
 
 function setup() {
 
+
 $(document).one("click", newRound);
+
+if (annyang) {
+// Let's define our first command. First the text we expect, and then the function it should call
+var commands = {'hello :name': helloFunction, 'howdy': helloFunction};
+var commands2 = {'hi': helloFunction};
+var commands3 = {'I give up': iGiveUp};
+
+
+annyang.addCommands(commands);
+annyang.addCommands(commands2);
+annyang.addCommands(commands3);
+
+
+// Start listening. You can call this here, or attach this call to an event, button, etc.
+annyang.start();
+}
+
 
 }
 
@@ -205,10 +222,19 @@ function handleGuess() {
 function sayBackwards(text) {
   let backwardsText = text.split('').reverse().join('');
 
-  responsiveVoice.speak(backwardsText, "French Female", {
-    pitch: 0.5,
+  responsiveVoice.speak(backwardsText, "UK English Male", {
+    pitch: 0.9,
     rate: 1
 
   });
+
+}
+
+function helloFunction() {
+  responsiveVoice.speak("Hello, how's it going?");
+}
+
+function iGiveUp() {
+  responsiveVoice.speak("You give up? Why?");
 
 }
