@@ -276,5 +276,20 @@ sayBackwards($correctButton.text());
 }
 
 function handleSpokenAnswer(animalVocalized) {
-console.log("Yeah?");
+console.log("annyang is listening to your spoken answer");
+// If the player says the wrong answer shake the buttons
+ // If they get it, start a new round
+ if (animalVocalized !== $correctButton.text()) {
+   responsiveVoice.speak("Idiot!");
+   $('.guess').effect('pulsate');
+   // And say the correct animal again to "help" them
+   sayBackwards($correctButton.text());
+ }
+
+ else if (animalVocalized === $correctButton.text()) {
+  responsiveVoice.speak("Nice job!");
+  $(".guess").fadeOut(1000);
+  $(".guess").remove();
+  setTimeout(newRound, 100);
+ }
 }
