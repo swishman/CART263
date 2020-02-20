@@ -172,12 +172,16 @@ function setup() {
     var commands4 = {
       'Say it again': sayItAgain
     };
+    var commands5 = {
+      'I think it is *animalVocalized': handleSpokenAnswer
+    };
 
 
     annyang.addCommands(commands);
     annyang.addCommands(commands2);
     annyang.addCommands(commands3);
     annyang.addCommands(commands4);
+    annyang.addCommands(commands5);
 
 
     // Start listening. You can call this here, or attach this call to an event, button, etc.
@@ -269,4 +273,8 @@ function sayItAgain() {
 
 sayBackwards($correctButton.text());
 
+}
+
+function handleSpokenAnswer(animalVocalized) {
+console.log("Yeah?");
 }
