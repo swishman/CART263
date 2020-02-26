@@ -265,15 +265,19 @@ function iGiveUp() {
   responsiveVoice.speak("You give up? Why?");
   $(".guess").fadeOut(1000);
   $(".guess").remove();
-  setTimeout(newRound, 100);
+  setTimeout(newRound, 2000);
 
 }
+
+// Repeats the animal name.
 
 function sayItAgain() {
 
 sayBackwards($correctButton.text());
 
 }
+
+// Handles a spoken answer using annyang's tag setup.
 
 function handleSpokenAnswer(animalVocalized) {
 console.log("annyang is listening to your spoken answer");
@@ -282,14 +286,21 @@ console.log("annyang is listening to your spoken answer");
  if (animalVocalized !== $correctButton.text()) {
    responsiveVoice.speak("Idiot!");
    $('.guess').effect('pulsate');
-   // And say the correct animal again to "help" them
+   // Repeat it again!
    sayBackwards($correctButton.text());
  }
 
  else if (animalVocalized === $correctButton.text()) {
   responsiveVoice.speak("Nice job!");
-  $(".guess").fadeOut(1000);
-  $(".guess").remove();
-  setTimeout(newRound, 100);
+  $correctButton.effect('pulsate',function(){
+
+    $(".guess").fadeOut(1500,function(){
+      $(this).remove();
+
+    });
+    setTimeout(newRound, 2000);
+
+  });
+
  }
 }
