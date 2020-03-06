@@ -293,7 +293,7 @@ function television(e) {
 
     responsiveVoice.speak("There's a lot of good stuff on television! The most recent show I watched is You, it's about this psycho stalker boyfriend named Ben who like kills people to get with the girls he likes. It's super creepy and scary to watch. I like to watch makeup video tutorials on Youtube, those are always super interesting and they have a lot of useful tips.", {
       pitch: 1,
-      rate: 1,
+      rate: 1
 
     });
 
