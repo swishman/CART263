@@ -1,121 +1,65 @@
-body,  {
- height: 100%;
- width:100vw;
- scroll-behavior: smooth;
- padding: 0;
- margin: 0;
- background-color: black;
-
+body, {
+  height: 100%;
+  width: 100vw;
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  background-color: black;
 }
 
 #flexcontainer {
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
 }
 
-
-#intro, #first, #second, #third {
+#intro {
   height: 100vh;
-  color: grey;
+  color: white;
   padding: 5%;
   display: flex;
-  flex-direction: row;
-
-}
-
-  #intro {
   background-color: blue;
   flex-direction: row;
-  justify-content:flex-end;
+  justify-content: flex-end;
   color: white;
-  }
+  font-family: Arial;
+}
 
-  #intro > #left {
-    width: 50%;
-    padding: 5%;
-  }
-
-  #intro > #right {
-    #width: 50%;
-    padding: 5%;
-  }
-
-  #intro > h3 {
-
-    font-size: 2em;
-    width: 500px;
-
-  }
-
-  #intro > p {
-
-    font-size: 1em;
-    width: 500px;
-
-  }
-
-
-  #first {
-    background-color: yellow;
-  }
-
-#first > #left {
+#intro> #left {
   width: 50%;
   padding: 5%;
 }
 
-#first > #right {
+#image-right {
   #width: 50%;
   padding: 5%;
 }
 
-#second {
-  background-color: green;
+#intro>h3 {
+  font-size: 2em;
+  width: 500px;
 }
 
-#second > #left {
-  width: 50%;
-  padding: 5%;
-}
-
-#second > #right {
-  #width: 50%;
-  padding: 5%;
-}
-
-#third {
-  background-color: orange;
-
-}
-
-#third > #left {
-  width: 50%;
-  padding: 5%;
-}
-
-#third > #right {
-  #width: 50%;
-  padding: 5%;
+#intro>p {
+  font-size: 1em;
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   opacity: 0;
 }
 
 .ui-widget-header {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
 }
 
 .ui-dialog .ui-dialog-content {
   background-color: white;
   opacity: 0;
-
 }
 
 .ui-widget-content {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
 }
 
@@ -125,14 +69,24 @@ body,  {
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-  display:none;
+  display: none;
 }
 
 .ui-widget-content {
   height: 300px;
   overflow: auto;
   padding: 5%;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1em;
+}
 
+.ui-button {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  margin-top: 20px;
+  width: 100%;
+}
 
+#tabs {
+  height: 350px;
 }
