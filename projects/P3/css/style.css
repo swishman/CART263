@@ -1,0 +1,56 @@
+body {
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: black;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.grid-item {
+  background-color: grey;
+  border: 0.5px solid white;
+  padding: 20px;
+  font-size: 1em;
+  color: white;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+#header {
+  display: flex;
+  align-items: flex-end;
+}
+
+#tabs {
+  width: 75vh;
+  max-width: 750px;
+  height: 50vh;
+  max-height: 750px;
+  box-shadow: 5px 10px 20px #000000;
+}
+
+.ui-widget-content {
+  background-color: black !important;
+}
+
+#gundam {
+  width: 600px;
+  text-align: left;
+  font-family: monospace;
+  font-size: 10px;
+  color: white;
+  /* opacity: 0.0; */
+  position: absolute;
+}
+
+/* #header {
+  position: absolute;
+  bottom: 0;
+} */
