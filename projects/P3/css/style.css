@@ -1,22 +1,25 @@
-body {}
+body {
+  background-color: black;
+}
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: black;
   padding: 0px;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 
 .grid-item {
-  border: 0.5px solid black;
+  /* border: 0.5px solid black; */
   font-size: 2vh;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border: 1px solid grey;
+  z-index: 1;
 }
 
 #header {
@@ -47,20 +50,37 @@ body {}
 }
 
 #gundam {
-  display: none;
-  width: 600px;
+  width: auto;
   text-align: left;
   font-family: monospace;
-  font-size: 10px;
+  font-size: 5px;
   color: grey;
-  background-color: black;
-  /* opacity: 0.0; */
+  opacity: 0.5;
   position: absolute;
   top: -5vh;
   left: -5vw;
+  z-index: 0;
 }
 
-/* #header {
-  position: absolute;
-  bottom: 0;
-} */
+#chartContainer {
+  align-self: center;
+}
+
+#SVGgraphic {
+  align-self: center;
+}
+
+.ROARING_TIDES {
+  fill: none;
+  stroke: white;
+  stroke-width: 1px;
+  animation: move 20s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 5s;
+}
+
+@keyframes move {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

@@ -22,9 +22,14 @@ function setup() {
   .done(gotData)
   .fail(dataError);
 
+
+  //  Creating our tabs
+
   $( function() {
    $( "#tabs" ).tabs();
  } );
+
+ // Creating our dialogue
 
  $( function() {
     $( "#dialog" ).dialog({
@@ -43,6 +48,8 @@ function setup() {
       $( "#dialog" ).dialog( "open" );
     });
   } );
+
+  // Handling the configuration of our graphs
 
  var options = {
  	animationEnabled: true,
@@ -82,7 +89,17 @@ function setup() {
  };
  $("#chartContainer").CanvasJSChart(options);
 
-}
+ $(document).on('mousemove', function(e){
+     $('#gundam').css({
+        left:  e.pageX,
+        top:   e.pageY
+     });
+ });
+
+
+} // End of setup function.
+
+
 
 function gotData(data) {
   startTyping(data);
@@ -112,5 +129,15 @@ function startTyping(text) {
       clearInterval(typingInterval);
     }
   }, 0.1);
+
+// ROARING TIDES ANIMATE
+
+let path = document.querySelector(".ROARING_TIDES");
+let length = path.getTotalLength();
+// console.log(length);
+
+path.style.strokeDasharray = length + ' ' + length;
+path.style.strokeDashoffset = length;
+
 
 }
