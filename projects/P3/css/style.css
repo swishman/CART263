@@ -1,6 +1,4 @@
-body {
-
-}
+body {}
 
 .grid-container {
   display: grid;
@@ -15,16 +13,15 @@ body {
   border: 0.5px solid black;
   font-size: 2vh;
   color: white;
-  align-items: flex-start;
-  justify-content: center;
   display: flex;
-
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid grey;
 }
 
 #header {
   align-items: flex-end;
   z-index: 5;
-
 }
 
 #tabs {
@@ -33,6 +30,8 @@ body {
   height: 50vh;
   max-height: 750px;
   box-shadow: 5px 10px 20px #000000;
+  overflow: scroll;
+  align-self: center;
 }
 
 .ui-widget-content {
@@ -41,11 +40,14 @@ body {
 
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
   background-color: black !important;
-
 }
 
+.ui-widget-header {
+  background-color: black !important;
+}
 
 #gundam {
+  display: none;
   width: 600px;
   text-align: left;
   font-family: monospace;
@@ -54,8 +56,8 @@ body {
   background-color: black;
   /* opacity: 0.0; */
   position: absolute;
-  top: 5vh;
-  left: 5vw;
+  top: -5vh;
+  left: -5vw;
 }
 
 /* #header {

@@ -26,6 +26,24 @@ function setup() {
    $( "#tabs" ).tabs();
  } );
 
+ $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+
  var options = {
  	animationEnabled: true,
   backgroundColor: "black",
@@ -44,6 +62,7 @@ function setup() {
  	data: [{
  		yValueFormatString: "$#,###",
  		xValueFormatString: "MMMM",
+    color: "white",
  		type: "spline",
  		dataPoints: [
  			{ x: new Date(2017, 0), y: 25060 },
