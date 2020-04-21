@@ -13,6 +13,7 @@ to match your project! Write JavaScript to do amazing things below!
 $(document).ready(setup);
 
 
+
 function setup() {
 
   $.ajax({
@@ -23,91 +24,128 @@ function setup() {
   .fail(dataError);
 
 
+
   //  Creating our tabs
 
   $( function() {
    $( "#tabs" ).tabs();
  } );
 
- // Creating our dialogue
 
- $( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
+  // Creating our Values dialogue
 
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  } );
+  $( function() {
+     $( "#values-dialog" ).dialog({
+       autoOpen: true,
+       position: {  my: "center+300",
+   at: "bottom-350" },
+       show: {
+         effect: "fold",
+         duration: 1500
+       },
+       hide: {
+         effect: "fold",
+         duration: 100
+       },
+       minWidth: 500,
+       maxHeight: 400,
+       resizable: false,
+       open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
 
-  // Handling the configuration of our graphs
-
- var options = {
- 	animationEnabled: true,
-  backgroundColor: "black",
-
- 	title:{
- 		text: "Monthly Sales - 2017"
- 	},
- 	axisX: {
- 		valueFormatString: "MMM"
- 	},
- 	axisY: {
- 		title: "Sales (in USD)",
- 		prefix: "$",
- 		includeZero: false
- 	},
- 	data: [{
- 		yValueFormatString: "$#,###",
- 		xValueFormatString: "MMMM",
-    color: "white",
- 		type: "spline",
- 		dataPoints: [
- 			{ x: new Date(2017, 0), y: 25060 },
- 			{ x: new Date(2017, 1), y: 27980 },
- 			{ x: new Date(2017, 2), y: 33800 },
- 			{ x: new Date(2017, 3), y: 49400 },
- 			{ x: new Date(2017, 4), y: 40260 },
- 			{ x: new Date(2017, 5), y: 33900 },
- 			{ x: new Date(2017, 6), y: 48000 },
- 			{ x: new Date(2017, 7), y: 31500 },
- 			{ x: new Date(2017, 8), y: 32300 },
- 			{ x: new Date(2017, 9), y: 42000 },
- 			{ x: new Date(2017, 10), y: 52160 },
- 			{ x: new Date(2017, 11), y: 49400 }
- 		]
- 	}]
- };
- $("#chartContainer").CanvasJSChart(options);
-
- $(document).on('mousemove', function(e){
-     $('#gundam').css({
-        left:  e.pageX,
-        top:   e.pageY
      });
- });
+
+ // Configuring how to open our Values Dialog
+
+     $( "#values" ).on( "click", function() {
+       $( "#values-dialog" ).dialog( "open" );
+     });
+   } );
+
+   // Creating our Contact dialogue
+
+   $( function() {
+      $( "#contact-dialog" ).dialog({
+        autoOpen: true,
+        position: {  my: "center-350",
+    at: "top+250" },
+        show: {
+          effect: "fold",
+          duration: 2000
+        },
+        hide: {
+          effect: "fold",
+          duration: 200
+        },
+        minWidth: 500,
+        maxHeight: 400,
+        resizable: false,
+        open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
+
+      });
+
+  // Our Contact Dialog
+
+      $( "#contact" ).on( "click", function() {
+        $( "#contact-dialog" ).dialog( "open" );
+      });
+    } );
+
+
+    // Creating our Services dialogue
+
+    $( function() {
+       $( "#services-dialog" ).dialog({
+         autoOpen: true,
+         position: {  my: "center-300",
+     at: "bottom-250" },
+         show: {
+           effect: "fold",
+           duration: 1000
+         },
+         hide: {
+           effect: "fold",
+           duration: 200
+         },
+         minWidth: 500,
+         maxHeight: 400,
+         resizable: false,
+         open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
+
+       });
+
+   // Configuring how to open our Services Dialog
+
+       $( "#services" ).on( "click", function() {
+         $( "#services-dialog" ).dialog( "open" );
+       });
+     } );
+
+
+ // Follow the mouse!
+
+ // $(document).on('mousemove', function(e){
+ //     $('#gundam').css({
+ //        left:  e.pageX,
+ //        top:   e.pageY
+ //     });
+ // });
 
 
 } // End of setup function.
 
-
+// Handling the text received by ajax
 
 function gotData(data) {
   startTyping(data);
 }
 
+// Handling the text received by ajax in case of failure
+
 function dataError() {
   console.error("Boo!");
 }
+
+// Ascii Art Animation
 
 function startTyping(text) {
   let next = 0;
@@ -128,7 +166,8 @@ function startTyping(text) {
     if (next === text.length) {
       clearInterval(typingInterval);
     }
-  }, 0.1);
+  }, 0.5);
+
 
 // ROARING TIDES ANIMATE
 
