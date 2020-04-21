@@ -112,7 +112,7 @@ function initCaptureDevice() {
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight); // we need some space...
+  createCanvas(windowWidth*1.25, windowHeight*1.25); // we need some space...
 
   initCaptureDevice(); // and access to the camera
   /*

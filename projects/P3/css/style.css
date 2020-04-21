@@ -1,8 +1,10 @@
 body {
   background-color: black;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-#defaultCanvas0, .p5Canvas {
+#defaultCanvas0 {
 
  width: 100vw;
  height: 100vh;
@@ -78,6 +80,10 @@ input, textarea {
 .ui-widget-content {
   background: black !important;
   color: white !important;
+}
+
+.ui-widget-content > h2 {
+  font-family: Times;
 }
 
 

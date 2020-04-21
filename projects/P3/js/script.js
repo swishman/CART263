@@ -10,7 +10,7 @@ to match your project! Write JavaScript to do amazing things below!
 
 *********************************************************************/
 
-$(document).ready(setup);
+$(window).ready(setup);
 
 
 
@@ -96,8 +96,7 @@ function setup() {
     $( function() {
        $( "#services-dialog" ).dialog({
          autoOpen: true,
-         position: {  my: "center-300",
-     at: "bottom-250" },
+         position: {  at: "center-20% center+150" },
          show: {
            effect: "fold",
            duration: 1000
