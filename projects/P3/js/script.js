@@ -2,11 +2,8 @@
 
 /********************************************************************
 
-Title of Project
-Author Name
-
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
+Design Auathority Beta Version 1
+Matthew
 
 *********************************************************************/
 
@@ -50,7 +47,8 @@ function setup() {
        minWidth: 500,
        maxHeight: 400,
        resizable: false,
-       open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
+       open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");},
+       close:  function() {$("#six").show(400);}
 
      });
 
@@ -79,7 +77,9 @@ function setup() {
         minWidth: 500,
         maxHeight: 400,
         resizable: false,
-        open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
+        open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");},
+        close:  function() {$("#six").show(400);}
+
 
       });
 
@@ -108,7 +108,8 @@ function setup() {
          minWidth: 500,
          maxHeight: 400,
          resizable: false,
-         open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");}
+         open: function() {$(".ui-dialog").addClass("ui-dialog-shadow");},
+         close:  function() {$("#six").show(400);}
 
        });
 
@@ -176,6 +177,9 @@ let length = path.getTotalLength();
 
 path.style.strokeDasharray = length + ' ' + length;
 path.style.strokeDashoffset = length;
+
+// Checks to see if UI close button is clicked.
+// If it is, it'll show the navigation in the right-hand corner.
 
 
 }

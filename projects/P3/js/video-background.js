@@ -169,7 +169,7 @@ function draw() {
       different values may have the best effect. And sometimes it is worth not
       to apply the effect of posterization on the image.
     */
-    gfx.filter(POSTERIZE, 5);
+    gfx.filter(POSTERIZE, 6);
     /*
       Here the processed image is converted to the ASCII art. The convert()
       function in this case is used with just one parameter (image we want to
@@ -222,7 +222,7 @@ function draw() {
       not every problem with the camera will be detected, but it's better than
       nothing) we will change the background color to alarmistically red.
     */
-    background(255, 0, 0);
+    background(0);
   }
 }
 
