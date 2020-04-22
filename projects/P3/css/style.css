@@ -20,8 +20,8 @@ input, textarea {
 
 }
 
-a-scene {
-  height: 300px;
+#myEmbeddedScene {
+  height: 200px;
   width: 500px;
 }
 
@@ -55,6 +55,7 @@ a-scene {
 
 #six {
   background-color: black;
+  font-family: Helvetica;
   padding: 25px;
   box-shadow: 0px 0px 1000px #000;
   display: none;
